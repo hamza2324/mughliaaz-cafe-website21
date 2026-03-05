@@ -122,6 +122,18 @@
   .deal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,6,3,0.9) 0%,transparent 60%);opacity:0;transition:opacity 0.4s;display:flex;align-items:flex-end;padding:1rem 1.2rem}
   .deal-card:hover .deal-overlay{opacity:1}
   .deal-label{font-family:'Cinzel',serif;font-size:0.73rem;color:var(--gold);letter-spacing:0.08em}
+  #delivery-promo{padding:2.8rem 0;background:linear-gradient(90deg,rgba(56,18,7,0.94) 0%,rgba(34,11,5,0.92) 50%,rgba(56,18,7,0.94) 100%);border-top:1px solid rgba(201,151,74,0.12);border-bottom:1px solid rgba(201,151,74,0.12)}
+  .delivery-promo-wrap{display:flex;justify-content:center;align-items:center}
+  #order-options{padding:7rem 0;background:radial-gradient(circle at center,rgba(45,17,8,0.24) 0%,rgba(13,6,3,1) 72%)}
+  .oo-head{text-align:center;margin-bottom:3.2rem}
+  .oo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  .oo-card{background:linear-gradient(180deg,rgba(44,19,10,0.86) 0%,rgba(28,11,6,0.96) 100%);border:1px solid rgba(201,151,74,0.18);padding:2.2rem 1.6rem;text-align:center;min-height:240px;display:flex;flex-direction:column;justify-content:center}
+  .oo-icon{font-size:1.9rem;line-height:1;margin-bottom:0.9rem}
+  .oo-title{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--cream);letter-spacing:0.06em;text-transform:uppercase}
+  .oo-copy{font-size:0.8rem;color:var(--text-muted);margin:0.7rem 0 1.4rem}
+  .oo-btn{display:inline-block;text-decoration:none}
+  .oo-btn.btn-outline{padding:0.8rem 1.6rem}
+  .oo-btn.btn-gold{padding:0.8rem 1.6rem}
   #reviews{padding:8rem 0;background:var(--bg-dark)}
   .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(201,151,74,0.08);margin:4rem 0}
   .rev-card{background:var(--bg-card);padding:2.4rem;position:relative;transition:background 0.3s}
@@ -165,6 +177,7 @@
     .about-images{height:300px;margin-bottom:2rem}
     .dish-grid{grid-template-columns:1fr}.dish-card.big{grid-row:span 1}.dish-card.big .dish-card-wrap{min-height:260px}
     .reviews-grid{grid-template-columns:1fr}.menu-items.active{grid-template-columns:1fr}
+    .oo-grid{grid-template-columns:1fr}
     .deals-masonry{grid-template-columns:repeat(2,1fr)}.deal-card.wide{grid-column:span 2}
   }
 </style>
@@ -393,6 +406,42 @@
   </div>
   <div style="text-align:center;margin-top:3rem">
     <a href="tel:+923151555686" class="btn-gold"><span>📞 Call to Order — 0315 1555686</span></a>
+  </div>
+</div></section>
+
+<!-- DELIVERY PROMO -->
+<section id="delivery-promo"><div class="si">
+  <div class="delivery-promo-wrap reveal">
+    <a href="https://www.foodpanda.pk/restaurant/jxbd/mughliaaz" target="_blank" rel="noopener noreferrer" class="btn-gold"><span>🍔 Grab a Deal on Foodpanda</span></a>
+  </div>
+</div></section>
+
+<!-- ORDER OPTIONS -->
+<section id="order-options"><div class="si">
+  <div class="oo-head">
+    <p class="sec-label reveal">✦ 3 Ways to Enjoy Mughliaaz Café</p>
+    <h2 class="sec-heading reveal d1">Order or Visit Us Today</h2>
+    <div class="orn-line reveal d2"><div class="orn-diamond"></div></div>
+  </div>
+  <div class="oo-grid reveal d2">
+    <div class="oo-card">
+      <div class="oo-icon">🚀</div>
+      <h3 class="oo-title">Foodpanda Delivery</h3>
+      <p class="oo-copy">Delivered to your door in Abbottabad.</p>
+      <a href="https://www.foodpanda.pk/restaurant/jxbd/mughliaaz" target="_blank" rel="noopener noreferrer" class="oo-btn btn-gold"><span>Order Now</span></a>
+    </div>
+    <div class="oo-card">
+      <div class="oo-icon">📞</div>
+      <h3 class="oo-title">Call to Order</h3>
+      <p class="oo-copy">Direct phone orders and quick assistance.</p>
+      <a href="tel:+923151555686" class="oo-btn btn-gold"><span>0315-1555686</span></a>
+    </div>
+    <div class="oo-card">
+      <div class="oo-icon">🍽️</div>
+      <h3 class="oo-title">Dine In</h3>
+      <p class="oo-copy">Visit us at Nawansher Ilyasi, Abbottabad.</p>
+      <a href="https://maps.google.com/?q=34.165896,73.2596369" target="_blank" rel="noopener noreferrer" class="oo-btn btn-outline">Get Directions</a>
+    </div>
   </div>
 </div></section>
 
