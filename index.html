@@ -26,8 +26,11 @@
   .nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;transition:color 0.3s;position:relative}
   .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.3s}
   .nav-links a:hover{color:var(--gold)}.nav-links a:hover::after{transform:scaleX(1)}
-  .nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.5rem 1.3rem;font-family:'Raleway',sans-serif;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none}
+  .nav-actions{display:flex;align-items:center;gap:0.6rem}
+  .nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.5rem 1.3rem;font-family:'Raleway',sans-serif;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;white-space:nowrap}
   .nav-cta:hover{background:var(--gold);color:var(--bg-deep)}
+  .nav-order{background:var(--gold);color:var(--bg-deep);font-weight:600}
+  .nav-order:hover{background:var(--gold-light);border-color:var(--gold-light);color:var(--bg-deep)}
   #hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
   .hero-bg{position:absolute;inset:0;background:url('https://lh3.googleusercontent.com/gps-cs-s/AHVAweqdwih4WoSkUOvbD9pVdM8-v0Xv6Oetx99-nO0-oAaE18QMy44tgewk81pVfCiqT-FJjJwI9TqqW0U98KWJJEbpNemtlzDVlA_npeZp0JY-Z9kwnmoKHXLVyTzNEIV3qU1iTtfGwtYEql8=s680-w680-h510-rw') center center/cover no-repeat;animation:hzoom 22s ease infinite alternate}
   @keyframes hzoom{from{transform:scale(1.04)}to{transform:scale(1.12)}}
@@ -195,7 +198,10 @@
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#location">Find Us</a></li>
   </ul>
-  <a href="tel:+923151555686" class="nav-cta">0315 1555686</a>
+  <div class="nav-actions">
+    <a href="https://www.foodpanda.pk/restaurant/jxbd/mughliaaz" target="_blank" rel="noopener noreferrer" class="nav-cta nav-order">Order Online</a>
+    <a href="tel:+923151555686" class="nav-cta">0315 1555686</a>
+  </div>
 </nav>
 
 <!-- HERO -->
