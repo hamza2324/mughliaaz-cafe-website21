@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mughliaaz Café — Abbottabad's Royal Taste</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #C9974A; --gold-light: #E8C87A; --gold-dim: #8B6B35;
+    --cream: #F5EDD8; --bg-deep: #0D0603; --bg-dark: #170C07;
+    --bg-mid: #21100A; --bg-card: #1E0F09; --text-light: #F0E4CC; --text-muted: #9E8060;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg-deep);color:var(--text-light);font-family:'Raleway',sans-serif;font-weight:300;overflow-x:hidden}
+  ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg-deep)}::-webkit-scrollbar-thumb{background:var(--gold-dim)}
+  body::before{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:0.4}
+  .orn-line{display:flex;align-items:center;gap:1rem;margin:1.5rem auto;max-width:400px}
+  .orn-line::before,.orn-line::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim),transparent)}
+  .orn-diamond{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3.5rem;transition:all 0.5s}
+  nav.scrolled{background:rgba(13,6,3,0.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,151,74,0.15)}
+  .nav-logo img{height:52px;width:auto;object-fit:contain;filter:drop-shadow(0 0 10px rgba(201,151,74,0.3))}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;transition:color 0.3s;position:relative}
+  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform 0.3s}
+  .nav-links a:hover{color:var(--gold)}.nav-links a:hover::after{transform:scaleX(1)}
+  .nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.5rem 1.3rem;font-family:'Raleway',sans-serif;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none}
+  .nav-cta:hover{background:var(--gold);color:var(--bg-deep)}
+  #hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:url('https://lh3.googleusercontent.com/gps-cs-s/AHVAweqdwih4WoSkUOvbD9pVdM8-v0Xv6Oetx99-nO0-oAaE18QMy44tgewk81pVfCiqT-FJjJwI9TqqW0U98KWJJEbpNemtlzDVlA_npeZp0JY-Z9kwnmoKHXLVyTzNEIV3qU1iTtfGwtYEql8=s680-w680-h510-rw') center center/cover no-repeat;animation:hzoom 22s ease infinite alternate}
+  @keyframes hzoom{from{transform:scale(1.04)}to{transform:scale(1.12)}}
+  .hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(13,6,3,0.34) 0%,rgba(13,6,3,0.9) 100%),linear-gradient(180deg,rgba(13,6,3,0.72) 0%,rgba(13,6,3,0.38) 32%,rgba(13,6,3,0.62) 62%,rgba(13,6,3,0.98) 100%)}
+  .hero-content{position:relative;z-index:2;max-width:820px;padding:2rem;animation:fadeup 1.8s cubic-bezier(0.16,1,0.3,1) both}
+  @keyframes fadeup{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+  .hero-eyebrow{display:inline-block;font-size:clamp(0.88rem,1.35vw,1.08rem);letter-spacing:0.16em;text-transform:uppercase;color:var(--cream);font-weight:600;margin-bottom:1.8rem;padding:0.45rem 0.9rem;background:rgba(13,6,3,0.62);border:1px solid rgba(201,151,74,0.35);border-radius:2px;animation:fadeup 2s 0.2s both;text-shadow:0 2px 8px rgba(0,0,0,0.85)}
+  .hero-logo-img{width:155px;height:auto;margin:0 auto 1.4rem;display:block;filter:drop-shadow(0 0 22px rgba(201,151,74,0.55)) brightness(1.1);animation:fadeup 2s 0.3s both}
+  .hero-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.15rem,2.4vw,1.7rem);color:var(--cream);margin:0.8rem 0 2.5rem;letter-spacing:0.06em;animation:fadeup 2s 0.5s both;text-shadow:0 4px 14px rgba(0,0,0,0.9)}
+  .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeup 2s 0.7s both}
+  .btn-gold{background:var(--gold);color:var(--bg-deep);padding:0.95rem 2.5rem;font-family:'Raleway',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;text-decoration:none;border:2px solid var(--gold);transition:all 0.35s;position:relative;overflow:hidden;display:inline-block}
+  .btn-gold::before{content:'';position:absolute;inset:0;background:var(--gold-light);transform:translateX(-100%);transition:transform 0.4s}
+  .btn-gold:hover::before{transform:translateX(0)}.btn-gold span{position:relative;z-index:1}
+  .btn-outline{background:transparent;color:var(--cream);padding:0.95rem 2.5rem;font-family:'Raleway',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(245,237,216,0.3);transition:all 0.35s}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+  .hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;cursor:pointer;animation:fadeup 2s 1.2s both}
+  .hero-scroll span{font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,0.9)}
+  .scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent);animation:spulse 2s ease infinite}
+  @keyframes spulse{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  .marquee-strip{background:var(--gold);padding:0.85rem 0;overflow:hidden}
+  .marquee-track{display:flex;animation:marquee 30s linear infinite;white-space:nowrap}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .mq-item{font-family:'Cinzel',serif;font-size:0.67rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--bg-deep);padding:0 2rem;flex-shrink:0}
+  .mq-dot{color:rgba(13,6,3,0.35);font-size:1rem;padding:0 0.3rem}
+  section{position:relative}.si{max-width:1200px;margin:0 auto;padding:0 2rem}
+  .sec-label{font-size:0.62rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem}
+  .sec-heading{font-family:'Cinzel',serif;font-size:clamp(1.85rem,3.6vw,2.9rem);font-weight:600;color:var(--cream);line-height:1.15}
+  .sec-body{font-family:'Cormorant Garamond',serif;font-size:1.18rem;line-height:1.85;color:var(--text-muted)}
+  #about{padding:8rem 0;background:var(--bg-dark)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+  .about-images{position:relative;height:520px}
+  .about-img-main{position:absolute;top:0;left:0;width:74%;height:80%;object-fit:cover;filter:brightness(0.82) sepia(8%);transition:filter 0.5s}
+  .about-img-main:hover{filter:brightness(0.95) sepia(0%)}
+  .about-img-accent{position:absolute;bottom:0;right:0;width:54%;height:50%;object-fit:cover;border:3px solid var(--bg-dark);filter:brightness(0.78) sepia(8%);transition:filter 0.5s}
+  .about-img-accent:hover{filter:brightness(0.95) sepia(0%)}
+  .about-badge{position:absolute;top:53%;left:58%;background:var(--gold);color:var(--bg-deep);width:96px;height:96px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:3px solid var(--bg-dark);z-index:3}
+  .about-badge .num{font-family:'Cinzel',serif;font-size:1.7rem;font-weight:700;line-height:1}
+  .about-badge .lbl{font-size:0.52rem;letter-spacing:0.08em;text-transform:uppercase;line-height:1.3}
+  .about-text p{font-family:'Cormorant Garamond',serif;font-size:1.12rem;line-height:1.9;color:var(--text-muted);margin-bottom:1rem}
+  .about-text p em{color:var(--gold-light);font-style:italic}
+  .about-stats{display:flex;gap:2.5rem;margin-top:2.5rem;border-top:1px solid rgba(201,151,74,0.15);padding-top:2rem}
+  .stat-num{font-family:'Cinzel',serif;font-size:2rem;color:var(--gold);display:block}
+  .stat-lbl{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted)}
+  #specialties{padding:8rem 0;background:var(--bg-mid);overflow:hidden}
+  #specialties::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 8% 50%,rgba(181,69,27,0.05) 0%,transparent 50%),radial-gradient(circle at 92% 20%,rgba(201,151,74,0.04) 0%,transparent 45%);pointer-events:none}
+  .spec-header{text-align:center;margin-bottom:4rem}
+  .dish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(201,151,74,0.08)}
+  .dish-card{background:var(--bg-card);overflow:hidden;position:relative;cursor:pointer}
+  .dish-card.big{grid-row:span 2}
+  .dish-card-wrap{height:262px;overflow:hidden}
+  .dish-card.big .dish-card-wrap{height:100%;min-height:526px}
+  .dish-img{width:100%;height:100%;object-fit:cover;transition:transform 0.65s cubic-bezier(0.4,0,0.2,1),filter 0.55s;filter:brightness(0.82) saturate(1.1)}
+  .dish-card:hover .dish-img{transform:scale(1.08);filter:brightness(0.62) saturate(1.0)}
+  .dish-info{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,6,3,0.97) 0%,rgba(13,6,3,0.3) 55%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem;opacity:0.72;transition:opacity 0.4s}
+  .dish-card:hover .dish-info{opacity:1}
+  .dish-tag{font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.35rem}
+  .dish-name{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--cream);margin-bottom:0.25rem}
+  .dish-desc{font-family:'Cormorant Garamond',serif;font-size:0.92rem;color:var(--text-muted);line-height:1.45;transform:translateY(10px);opacity:0;transition:all 0.4s 0.08s}
+  .dish-card:hover .dish-desc{opacity:1;transform:translateY(0)}
+  .dish-price{font-family:'Cinzel',serif;font-size:0.95rem;color:var(--gold);margin-top:0.45rem}
+  #ambiance{padding:8rem 0;background:var(--bg-dark)}
+  .amb-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+  .amb-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:6px}
+  .amb-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.75) sepia(8%);transition:filter 0.5s,transform 0.5s}
+  .amb-img:hover{filter:brightness(0.95) sepia(0%);transform:scale(1.02)}
+  .amb-tall{grid-row:span 2;height:406px}
+  .amb-features{list-style:none;margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
+  .amb-features li{display:flex;align-items:flex-start;gap:1rem;font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--text-muted);line-height:1.5}
+  .fi{color:var(--gold);font-size:1rem;flex-shrink:0;margin-top:3px}
+  #menu{padding:8rem 0;background:var(--bg-deep);position:relative}
+  #menu::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9974A' fill-opacity='0.025'%3E%3Cpath d='M20 0L40 20L20 40L0 20z'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+  .menu-header{text-align:center;margin-bottom:3.5rem}
+  .menu-tabs{display:flex;justify-content:center;width:fit-content;margin:0 auto 3rem;border:1px solid rgba(201,151,74,0.2);overflow:hidden;flex-wrap:wrap}
+  .mtab{padding:0.7rem 1.6rem;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;font-family:'Raleway',sans-serif;font-weight:500;cursor:pointer;color:var(--text-muted);background:transparent;border:none;border-right:1px solid rgba(201,151,74,0.2);transition:all 0.3s}
+  .mtab:last-child{border-right:none}.mtab.active,.mtab:hover{background:var(--gold);color:var(--bg-deep)}
+  .menu-items{display:none}.menu-items.active{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,151,74,0.08)}
+  .mitem{background:var(--bg-card);padding:1.4rem 1.8rem;display:flex;align-items:center;gap:1.4rem;transition:background 0.3s}
+  .mitem:hover{background:#231108}
+  .mitem-img{width:82px;height:82px;object-fit:cover;flex-shrink:0;filter:brightness(0.88) saturate(1.1);transition:filter 0.4s}
+  .mitem:hover .mitem-img{filter:brightness(1) saturate(1.2)}
+  .mitem-info{flex:1}
+  .mitem-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:0.18rem}
+  .mitem-desc{font-size:0.74rem;color:var(--text-muted);line-height:1.45}
+  .mitem-price{font-family:'Cinzel',serif;font-size:0.88rem;color:var(--gold);white-space:nowrap}
+  #deals{padding:8rem 0;background:var(--bg-mid)}
+  .deals-header{text-align:center;margin-bottom:4rem}
+  .deals-masonry{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:transparent;grid-auto-flow:dense}
+  .deal-card{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1;background:transparent}
+  .deal-card.wide{grid-column:span 2;aspect-ratio:2/1}
+  .deal-img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85) saturate(1.05);transition:transform 0.65s cubic-bezier(0.4,0,0.2,1),filter 0.5s}
+  .deal-card:hover .deal-img{transform:scale(1.08);filter:brightness(1) saturate(1.15)}
+  .deal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,6,3,0.9) 0%,transparent 60%);opacity:0;transition:opacity 0.4s;display:flex;align-items:flex-end;padding:1rem 1.2rem}
+  .deal-card:hover .deal-overlay{opacity:1}
+  .deal-label{font-family:'Cinzel',serif;font-size:0.73rem;color:var(--gold);letter-spacing:0.08em}
+  #reviews{padding:8rem 0;background:var(--bg-dark)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(201,151,74,0.08);margin:4rem 0}
+  .rev-card{background:var(--bg-card);padding:2.4rem;position:relative;transition:background 0.3s}
+  .rev-card:hover{background:#1e1008}
+  .rev-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:5.5rem;color:var(--gold);opacity:0.1;position:absolute;top:0.4rem;left:1.4rem;line-height:1}
+  .rev-stars{color:var(--gold);font-size:0.85rem;letter-spacing:0.12em;margin-bottom:0.9rem}
+  .rev-text{font-family:'Cormorant Garamond',serif;font-size:1.08rem;line-height:1.8;color:var(--text-muted);margin-bottom:1.4rem;font-style:italic}
+  .rev-author{display:flex;align-items:center;gap:0.75rem}
+  .rev-av{width:36px;height:36px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:0.85rem;color:var(--bg-deep);flex-shrink:0}
+  .rev-name{font-size:0.78rem;font-weight:600;color:var(--cream)}
+  .rev-loc{font-size:0.62rem;color:var(--text-muted);letter-spacing:0.08em}
+  #cta{position:relative;padding:7rem 0;overflow:hidden;text-align:center}
+  .cta-bg{position:absolute;inset:0;background:url('https://scontent.fisb5-1.fna.fbcdn.net/v/t39.30808-6/631689510_122103113301248101_1338685123813487171_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=T7vIzLWQ4lsQ7kNvwGVnXvH&_nc_oc=AdnMPm0DfQfbIu6VaZQFY39LV0HqBpe46lvbhiWsr0ownwTqPy-DbfeA_r4IzvpdVCU&_nc_zt=23&_nc_ht=scontent.fisb5-1.fna&_nc_gid=VlvtrnbhiYUwm0fsDGxoTA&_nc_ss=8&oh=00_AfzX8tSFpQzxSiXeT_HVQcyn9tO3g9ulpmHnHe5KL3qcoQ&oe=69AECFEB') center/cover;filter:brightness(0.2) saturate(1.2)}
+  .cta-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,6,3,0.92) 0%,rgba(33,16,10,0.82) 100%)}
+  .cta-content{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:2rem}
+  .cta-content p{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--text-muted);margin-bottom:2.5rem;line-height:1.8}
+  .cta-phone{margin-top:2rem;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-light);letter-spacing:0.1em;font-style:italic}
+  .cta-phone a{color:inherit;text-decoration:none}
+  #location{padding:8rem 0;background:var(--bg-dark)}
+  .loc-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}
+  .loc-details{display:flex;flex-direction:column;gap:1.6rem;margin-top:2rem}
+  .loc-detail{display:flex;gap:1rem;align-items:flex-start}
+  .loc-icon{color:var(--gold);font-size:1rem;flex-shrink:0;margin-top:4px}
+  .loc-lbl{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem}
+  .loc-val{font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--text-muted);line-height:1.5}
+  .map-wrap{height:400px;overflow:hidden;border:1px solid rgba(201,151,74,0.15)}
+  .map-wrap iframe{width:100%;height:100%;border:none;filter:invert(92%) hue-rotate(180deg) brightness(85%) contrast(90%)}
+  footer{background:var(--bg-deep);border-top:1px solid rgba(201,151,74,0.1);padding:3.5rem 0;text-align:center}
+  .footer-logo img{height:68px;width:auto;margin:0 auto 0.5rem;display:block;filter:drop-shadow(0 0 12px rgba(201,151,74,0.25)) brightness(1.05)}
+  .footer-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.96rem;color:var(--text-muted);margin-bottom:2rem}
+  .footer-links{display:flex;justify-content:center;gap:2.5rem;list-style:none;margin-bottom:2rem;flex-wrap:wrap}
+  .footer-links a{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.3s}
+  .footer-links a:hover{color:var(--gold)}
+  .footer-copy{font-size:0.6rem;letter-spacing:0.08em;color:rgba(158,128,96,0.35)}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
+  @media(max-width:900px){
+    nav{padding:1rem 1.5rem}.nav-links{display:none}
+    .about-grid,.amb-grid,.loc-grid{grid-template-columns:1fr}
+    .about-images{height:300px;margin-bottom:2rem}
+    .dish-grid{grid-template-columns:1fr}.dish-card.big{grid-row:span 1}.dish-card.big .dish-card-wrap{min-height:260px}
+    .reviews-grid{grid-template-columns:1fr}.menu-items.active{grid-template-columns:1fr}
+    .deals-masonry{grid-template-columns:repeat(2,1fr)}.deal-card.wide{grid-column:span 2}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo"><img src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/627678497_122096195979248101_3708719850022073469_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=qfSwq1_GPRgQ7kNvwE-8cfd&_nc_oc=Adm2AMxGmf20OXlXA7bgNCKtp_5N7FAUZJ77pGooDGdJJNtFE9nzFfmBnpv4LugH3FQ&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=BRZalS6CZKPOrauiSu3pjw&_nc_ss=8&oh=00_Afxcf5q2qkzRAyOjjCS8A6yH8tXgj15AERoEaa0D78BGgQ&oe=69AED4D1" alt="Mughliaaz"/></a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#specialties">Specialties</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#deals">Deals</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#location">Find Us</a></li>
+  </ul>
+  <a href="tel:+923151555686" class="nav-cta">0315 1555686</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">✦ Nawansher Ilayasi, Abbottabad &nbsp;·&nbsp; Open Daily from 12 PM ✦</p>
+    <img class="hero-logo-img" src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/627678497_122096195979248101_3708719850022073469_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=qfSwq1_GPRgQ7kNvwE-8cfd&_nc_oc=Adm2AMxGmf20OXlXA7bgNCKtp_5N7FAUZJ77pGooDGdJJNtFE9nzFfmBnpv4LugH3FQ&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=BRZalS6CZKPOrauiSu3pjw&_nc_ss=8&oh=00_Afxcf5q2qkzRAyOjjCS8A6yH8tXgj15AERoEaa0D78BGgQ&oe=69AED4D1" alt="Mughliaaz Café"/>
+    <p class="hero-tagline">Where Every Bite Tells a Royal Story</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-gold"><span>Explore Menu</span></a>
+      <a href="#deals" class="btn-outline">Today's Deals</a>
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+    <span>Discover</span><div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip"><div class="marquee-track">
+  <span class="mq-item">Crown Crust Pizza</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Best Karahi in Town</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Lahori Nashta</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Crispy Fried Chicken</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Zinger Burger Deals</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Loaded Fries</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Mughlai Pasta</span><span class="mq-dot">◆</span>
+  <span class="mq-item">12 Hot Wings</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Club Sandwich</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Crown Crust Pizza</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Best Karahi in Town</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Lahori Nashta</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Crispy Fried Chicken</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Zinger Burger Deals</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Loaded Fries</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Mughlai Pasta</span><span class="mq-dot">◆</span>
+  <span class="mq-item">12 Hot Wings</span><span class="mq-dot">◆</span>
+  <span class="mq-item">Club Sandwich</span><span class="mq-dot">◆</span>
+</div></div>
+
+<!-- ABOUT -->
+<section id="about"><div class="si">
+  <div class="about-grid">
+    <div class="about-images reveal">
+      <img class="about-img-main" src="https://lh3.googleusercontent.com/p/AF1QipPPS_Ex4dkUjfEg7At1YrXKg3vMIrY8KZ5QHZ5f=s680-w680-h510-rw" alt="Mughliaaz exterior"/>
+      <img class="about-img-accent" src="https://lh3.googleusercontent.com/p/AF1QipMCHoIkTqew26rZWz0kZVMuvZb5UdcdUURe-zrN=s680-w680-h510-rw" alt="Mughliaaz interior"/>
+      <div class="about-badge"><span class="num">30+</span><span class="lbl">Years of<br>Craft</span></div>
+    </div>
+    <div class="about-text">
+      <p class="sec-label reveal">✦ Our Heritage</p>
+      <h2 class="sec-heading reveal d1">A Kitchen Built<br>on Passion & Pride</h2>
+      <div class="orn-line reveal d2"><div class="orn-diamond"></div></div>
+      <p class="reveal d2">Born from <em>over three decades of culinary mastery</em>, Mughliaaz Café brings the grandeur of royal kitchens right here to Abbottabad. From our slow-cooked Karahi to our legendary Crown Crust Pizza, every dish is a labour of love.</p>
+      <p class="reveal d3">We believe great food is more than a meal — it's a <em>memory, a moment, a story</em>. Whether you're here for a family dinner, a quick nashta, or a full celebration, we pour our heart into every single plate.</p>
+      <div class="about-stats reveal d4">
+        <div><span class="stat-num">30+</span><span class="stat-lbl">Years Expertise</span></div>
+        <div><span class="stat-num">50+</span><span class="stat-lbl">Menu Items</span></div>
+        <div><span class="stat-num">100%</span><span class="stat-lbl">Halal Certified</span></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- SPECIALTIES -->
+<section id="specialties"><div class="si">
+  <div class="spec-header">
+    <p class="sec-label reveal">✦ House Favourites</p>
+    <h2 class="sec-heading reveal d1">Signature Dishes</h2>
+    <div class="orn-line reveal d2"><div class="orn-diamond"></div></div>
+  </div>
+  <div class="dish-grid reveal">
+    <div class="dish-card big">
+      <div class="dish-card-wrap"><img class="dish-img" src="https://scontent.fisb5-1.fna.fbcdn.net/v/t39.30808-6/631689510_122103113301248101_1338685123813487171_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=T7vIzLWQ4lsQ7kNvwGVnXvH&_nc_oc=AdnMPm0DfQfbIu6VaZQFY39LV0HqBpe46lvbhiWsr0ownwTqPy-DbfeA_r4IzvpdVCU&_nc_zt=23&_nc_ht=scontent.fisb5-1.fna&_nc_gid=VlvtrnbhiYUwm0fsDGxoTA&_nc_ss=8&oh=00_AfzX8tSFpQzxSiXeT_HVQcyn9tO3g9ulpmHnHe5KL3qcoQ&oe=69AECFEB" alt="Crown Crust Pizza"/></div>
+      <div class="dish-info">
+        <span class="dish-tag">★ Signature · Best Pizza in Town</span>
+        <div class="dish-name">Special Crown Crust Pizza</div>
+        <div class="dish-desc">It's not just a pizza — it's a crown on a plate. Our legendary crust loaded with premium toppings, baked to golden perfection. The best pizza in Abbottabad, period.</div>
+        <div class="dish-price">From PKR 1,600</div>
+      </div>
+    </div>
+    <div class="dish-card">
+      <div class="dish-card-wrap"><img class="dish-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/631526694_122103112473248101_423890865839533089_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=m9bydXIu5KMQ7kNvwFyLzS2&_nc_oc=Adkuvjo5K1Zdnw_7BMstxErym-GItRrQXTay_BqtgCqBopw3eHkT20Ygihq2PGvoVdU&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=9WEzrwKHxEzRnU3x0z-6xw&_nc_ss=8&oh=00_Afx7vITgboVQZ617ckVSRnoYSa52iv5obzxQkDi-djpJMg&oe=69AEFB28" alt="Best Karahi"/></div>
+      <div class="dish-info">
+        <span class="dish-tag">Best Karahi in Town</span>
+        <div class="dish-name">Mughliaaz Karahi</div>
+        <div class="dish-desc">Charred tomato base, fresh green chilli, and tender meat — cooked in a blazing iron wok until perfect.</div>
+        <div class="dish-price">PKR 750 – 2,150</div>
+      </div>
+    </div>
+    <div class="dish-card">
+      <div class="dish-card-wrap"><img class="dish-img" src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/631263299_122103113763248101_7097011920520366460_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=g_tFY3QeBQUQ7kNvwHBWTe6&_nc_oc=AdkwHIr-kHQ6iT7WS5By5sop6i0MJe4cG4P6wq8Bm0zOnzWR9_g94F_Eb98as3kBssM&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=vQiyzspR1T9nzakRAcfwBA&_nc_ss=8&oh=00_Afx_nNCZahKWBHATRc3fX7qLjfKhzI72mOAb6IjSTMMT4Q&oe=69AED215" alt="Lahori Nashta"/></div>
+      <div class="dish-info">
+        <span class="dish-tag">Best Nashta in Town</span>
+        <div class="dish-name">Lahori Nashta</div>
+        <div class="dish-desc">A full Lahori breakfast spread — the ultimate morning ritual brought to Abbottabad.</div>
+        <div class="dish-price">From PKR 380</div>
+      </div>
+    </div>
+    <div class="dish-card">
+      <div class="dish-card-wrap"><img class="dish-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/632271694_122103113991248101_7374051721881788328_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=J8FV5nnDxLIQ7kNvwE8QaoX&_nc_oc=AdlZymdI3738YvhTU9h2s-tUomvU0JB6BDNOTLTEWQbFawTZVfzvCiyEbzA8daZ5UYc&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=-xoxvxQWY9sjn7JcSwUh0A&_nc_ss=8&oh=00_AfzmNWEkfO5a6W819oomFPk9HopLgI-GeLr9W724q0jBYg&oe=69AED07C" alt="Crispy Chicken"/></div>
+      <div class="dish-info">
+        <span class="dish-tag">Fan Favourite</span>
+        <div class="dish-name">Crispy Fried Chicken</div>
+        <div class="dish-desc">Golden crunch outside, juicy inside. Dangerously addictive — you've been warned.</div>
+        <div class="dish-price">From PKR 320</div>
+      </div>
+    </div>
+    <div class="dish-card">
+      <div class="dish-card-wrap"><img class="dish-img" src="https://scontent.fisb5-1.fna.fbcdn.net/v/t39.30808-6/631403714_122103113481248101_6786291758986008704_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Z9MDCKx3GNsQ7kNvwH_phrG&_nc_oc=AdmZSpwDESi25q7BKC53mhDYKVXHPBFWgMXQrqsts42HF4WGwizCs74SedGUKjvXd70&_nc_zt=23&_nc_ht=scontent.fisb5-1.fna&_nc_gid=K5t8ahnRbY6mAMRy7Ck01g&_nc_ss=8&oh=00_AfziNPTEz80YjZ4Bu4VdK4jRfXqSZUOctrRp1UKAqM5COg&oe=69AEDEBE" alt="Best Pasta"/></div>
+      <div class="dish-info">
+        <span class="dish-tag">Best Pasta in Town</span>
+        <div class="dish-name">Mughliaaz Pasta</div>
+        <div class="dish-desc">Creamy, rich, and soul-warming. Our pasta earns the title every single time.</div>
+        <div class="dish-price">From PKR 550</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- AMBIANCE -->
+<section id="ambiance"><div class="si">
+  <div class="amb-grid">
+    <div>
+      <p class="sec-label reveal">✦ The Experience</p>
+      <h2 class="sec-heading reveal d1">More Than<br>Just a Meal</h2>
+      <div class="orn-line reveal d2"><div class="orn-diamond"></div></div>
+      <p class="sec-body reveal d2">Step into Mughliaaz and feel a warmth that goes beyond the food. Our space is built for comfort, family, and celebration — with the aroma of royal kitchens in every corner.</p>
+      <ul class="amb-features reveal d3">
+        <li><span class="fi">◆</span><span><strong style="color:var(--cream)">Dine-In & Takeaway</strong> — Full café ambiance or grab your favourites on the go. Quality never compromises.</span></li>
+        <li><span class="fi">◆</span><span><strong style="color:var(--cream)">Catering & Events</strong> — From intimate gatherings to 1,000+ guest events, we bring the royal feast to you.</span></li>
+        <li><span class="fi">◆</span><span><strong style="color:var(--cream)">Full Café Menu</strong> — Karahi, Pizza, Burgers, Pasta, Nashta, Wings, Fries — every craving under one roof.</span></li>
+        <li><span class="fi">◆</span><span><strong style="color:var(--cream)">100% Halal</strong> — Every ingredient sourced with care, every dish prepared to the highest standards.</span></li>
+      </ul>
+    </div>
+    <div class="amb-gallery reveal d2">
+      <img class="amb-img amb-tall" src="https://lh3.googleusercontent.com/p/AF1QipPPS_Ex4dkUjfEg7At1YrXKg3vMIrY8KZ5QHZ5f=s680-w680-h510-rw" alt="Mughliaaz exterior"/>
+      <img class="amb-img" src="https://lh3.googleusercontent.com/p/AF1QipMCHoIkTqew26rZWz0kZVMuvZb5UdcdUURe-zrN=s680-w680-h510-rw" alt="Mughliaaz interior"/>
+      <img class="amb-img" src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/635194210_122105199129248101_1563821270783504375_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=13d280&_nc_ohc=kVmKKYeAlWMQ7kNvwFM0bOj&_nc_oc=AdnXetMHsdBee3SNNVTk1Re1fTJg2eF602QS3wGQE1MHPv2rLmzcFQTyxvj5y9HZXgI&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=iMU0EKB2eox8C-D_a0VrlQ&_nc_ss=8&oh=00_AfwBYm0PoOtgX6Nf93NUW7Qsi7Q7Hiy2negc33WJ3IhjWw&oe=69AEED2D" alt="Ramzan celebration"/>
+    </div>
+  </div>
+</div></section>
+
+<!-- MENU TABS -->
+<section id="menu"><div class="si">
+  <div class="menu-header">
+    <p class="sec-label reveal">✦ Full Menu</p>
+    <h2 class="sec-heading reveal d1">Taste Everything We've Got</h2>
+    <div class="orn-line reveal d2"><div class="orn-diamond"></div></div>
+  </div>
+  <div class="menu-tabs">
+    <button class="mtab active" onclick="switchTab('desi',this)">Desi Classics</button>
+    <button class="mtab" onclick="switchTab('pizza',this)">Pizza & Pasta</button>
+    <button class="mtab" onclick="switchTab('burgers',this)">Burgers</button>
+    <button class="mtab" onclick="switchTab('snacks',this)">Snacks & Sides</button>
+    <button class="mtab" onclick="switchTab('desserts',this)">Desserts</button>
+  </div>
+  <div class="menu-items active" id="desi">
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/631526694_122103112473248101_423890865839533089_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=m9bydXIu5KMQ7kNvwFyLzS2&_nc_oc=Adkuvjo5K1Zdnw_7BMstxErym-GItRrQXTay_BqtgCqBopw3eHkT20Ygihq2PGvoVdU&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=9WEzrwKHxEzRnU3x0z-6xw&_nc_ss=8&oh=00_Afx7vITgboVQZ617ckVSRnoYSa52iv5obzxQkDi-djpJMg&oe=69AEFB28" alt="Karahi"/><div class="mitem-info"><div class="mitem-name">Mughliaaz Karahi ★ Best in Town</div><div class="mitem-desc">Chicken / Mutton · Charred tomato, green chilli, iron wok cooked</div></div><div class="mitem-price">750–2,150</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/631263299_122103113763248101_7097011920520366460_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=g_tFY3QeBQUQ7kNvwHBWTe6&_nc_oc=AdkwHIr-kHQ6iT7WS5By5sop6i0MJe4cG4P6wq8Bm0zOnzWR9_g94F_Eb98as3kBssM&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=vQiyzspR1T9nzakRAcfwBA&_nc_ss=8&oh=00_Afx_nNCZahKWBHATRc3fX7qLjfKhzI72mOAb6IjSTMMT4Q&oe=69AED215" alt="Nashta"/><div class="mitem-info"><div class="mitem-name">Lahori Nashta ★ Best in Town</div><div class="mitem-desc">Full Lahori breakfast spread · paye, halwa puri, channay & more</div></div><div class="mitem-price">From 380</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepfldU3FyVuto5pNULc4hrAj_-X0vxtu7KYVsdOut-U5_NFOxYn0_U1E-hj8ymvwidSe0CngG2eH9voc-sbW2SCLTuIPG1XdoTdUmuOpYySxVohW_4QZMOW7FSMWqF98eMS9v4oXMLjxroF=s680-w680-h510-rw" alt="Nihari"/><div class="mitem-info"><div class="mitem-name">Beef Nihari</div><div class="mitem-desc">Slow-braised overnight, bone marrow, ginger julienne, nihari masala</div></div><div class="mitem-price">450</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwep5KIlQv9NM3NkSrPyAR8vcopiirCsl77qhCcHkSIDaD-kxKyTA064qM_eInu7-g_lqTmXh6mFBqEiTbc2xn-GNWi2G9ofvnVOSTpv-P8WgjwayauD4p9Xl3bqRtxPXJHbq1JT4lhTPMjbQ=s680-w680-h510-rw" alt="Mughlai Combo"/><div class="mitem-info"><div class="mitem-name">Mughlai Desi Combo</div><div class="mitem-desc">The complete royal spread — assorted desi dishes for the full table</div></div><div class="mitem-price">From 900</div></div>
+  </div>
+  <div class="menu-items" id="pizza">
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb5-1.fna.fbcdn.net/v/t39.30808-6/631689510_122103113301248101_1338685123813487171_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=T7vIzLWQ4lsQ7kNvwGVnXvH&_nc_oc=AdnMPm0DfQfbIu6VaZQFY39LV0HqBpe46lvbhiWsr0ownwTqPy-DbfeA_r4IzvpdVCU&_nc_zt=23&_nc_ht=scontent.fisb5-1.fna&_nc_gid=VlvtrnbhiYUwm0fsDGxoTA&_nc_ss=8&oh=00_AfzX8tSFpQzxSiXeT_HVQcyn9tO3g9ulpmHnHe5KL3qcoQ&oe=69AECFEB" alt="Crown Crust"/><div class="mitem-info"><div class="mitem-name">Special Crown Crust Pizza ★</div><div class="mitem-desc">Signature crown crust, loaded toppings — Best pizza in town</div></div><div class="mitem-price">1,600–2,000</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/633156267_122103112695248101_8017842057375029954_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=5So6cPuB0hsQ7kNvwGiWcii&_nc_oc=AdlTV-NG97eHosT4e2AXTlGQO6HhhCUmoYIN9Ng5T-LKSapWhiRJSEwMw9m0ObLGqoQ&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=ydFpKAIzq6N57djpk7typw&_nc_ss=8&oh=00_AfxSbZRG_YaiQBkT58xPkoIMoNQIMRoG7CsZYK672Q90Mg&oe=69AEE530" alt="Pizza"/><div class="mitem-info"><div class="mitem-name">Pizza (Tikka / Fajita / Regular)</div><div class="mitem-desc">Small, Medium, Large · Desi & International toppings · Oven-baked</div></div><div class="mitem-price">1,260–4,200</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb5-1.fna.fbcdn.net/v/t39.30808-6/628656023_122104999305248101_7251774839263994120_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=Fg-42CfZs6UQ7kNvwFKydX7&_nc_oc=Adl-NJIILygNpy1bhICEhqU2RVsI7XOVBizPky_RUBKWIytg3F76LvEFVOw3k-MjS2k&_nc_zt=23&_nc_ht=scontent.fisb5-1.fna&_nc_gid=j7zRkPV2wwFezSN7sK_7GQ&_nc_ss=8&oh=00_AfwLwx7o22ZafrhN4PEFnng59f0KW_PBDMtYTG1xvOJFvw&oe=69AEEDAE" alt="Love at First Slice"/><div class="mitem-info"><div class="mitem-name">Love at First Slice</div><div class="mitem-desc">Our special flavoured pizza — one bite and you're hooked forever</div></div><div class="mitem-price">From 1,800</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb5-1.fna.fbcdn.net/v/t39.30808-6/631403714_122103113481248101_6786291758986008704_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Z9MDCKx3GNsQ7kNvwH_phrG&_nc_oc=AdmZSpwDESi25q7BKC53mhDYKVXHPBFWgMXQrqsts42HF4WGwizCs74SedGUKjvXd70&_nc_zt=23&_nc_ht=scontent.fisb5-1.fna&_nc_gid=K5t8ahnRbY6mAMRy7Ck01g&_nc_ss=8&oh=00_AfziNPTEz80YjZ4Bu4VdK4jRfXqSZUOctrRp1UKAqM5COg&oe=69AEDEBE" alt="Pasta"/><div class="mitem-info"><div class="mitem-name">Mughliaaz Pasta ★ Best in Town</div><div class="mitem-desc">Fettuccine Alfredo & signature pasta · Creamy, rich, unforgettable</div></div><div class="mitem-price">550–1,050</div></div>
+  </div>
+  <div class="menu-items" id="burgers">
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb5-1.fna.fbcdn.net/v/t39.30808-6/636554857_122104996323248101_1320479687428740878_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=4zmYDkqU940Q7kNvwEpYzci&_nc_oc=AdmHrCJSgzlgDvPxuUuZjD9y4cHbiThs6Xr_9GPu7mdmedsttIZq1yo2TnfeQVdtMfg&_nc_zt=23&_nc_ht=scontent.fisb5-1.fna&_nc_gid=2UTjAWkCzdOyJfIKJRmvHg&_nc_ss=8&oh=00_AfwdWSLyVjpi0J5WpPg0dzvY-H20i6AGHx9LTPmDnFlC7A&oe=69AED518" alt="Zinger Burger"/><div class="mitem-info"><div class="mitem-name">Zinger Burger</div><div class="mitem-desc">Crispy zinger patty, fresh veggies, signature mayo sauce · Extra Cheese +70</div></div><div class="mitem-price">500</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/636653222_122104994373248101_3013488073458985946_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=13d280&_nc_ohc=ZFypJS3V5RMQ7kNvwFbMQlb&_nc_oc=AdkghuDu7aw5H2-vnWcWy4Bb22zs6CHC6LRLuoZslgNMuv4w4BMzPqQGXbpPbMWk2Nc&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=FhMAsaG9ZxY8a3AEvgHLUw&_nc_ss=8&oh=00_AfzlofHWqHuyh3hgZcVRW76rkEEUkrCOCYFzEsH6835meQ&oe=69AEF0A7" alt="Patty Burger"/><div class="mitem-info"><div class="mitem-name">Patty Burger</div><div class="mitem-desc">Juicy beef patty, double cheese, lettuce, tomato, special sauce</div></div><div class="mitem-price">450</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/635282446_122104996533248101_4394424100142153207_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=13d280&_nc_ohc=ov7sR95mzTcQ7kNvwHTKt66&_nc_oc=AdlLCuetq74NhdG_9fXNEa3KCN4MWN7UdHGN2aNj3X9pq1RJ1ysocg7etUWUmRZckTk&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=oOCYG-VR5Lu9gBgZmHeFMg&_nc_ss=8&oh=00_AfxfUoFINhQN0cfl1-AYowLKcb8DdxcNF1JwCah2g6TrpA&oe=69AEEDE0" alt="2 Zinger Paratha"/><div class="mitem-info"><div class="mitem-name">2 Zinger Paratha Deal</div><div class="mitem-desc">Two crispy zinger rolls in flaky paratha — desi twist on fast food</div></div><div class="mitem-price">From 550</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/637865937_122104994841248101_759510221539095523_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=13d280&_nc_ohc=zSpOBJarIcEQ7kNvwGVl13q&_nc_oc=AdnrwmTflrY33wpI3BP8LZPC9VbjaQWx8UI5eFwZsPMI2rUuu8EjgNO2ZZv4PFMQs7k&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=PYXLGLVTsk_nZcT7Y4UPwA&_nc_ss=8&oh=00_Afwz01VtUpo2s6cl-TpM7HvfFrEy1NFWUyNacEIKEblxaQ&oe=69AEDA75" alt="Club Sandwich"/><div class="mitem-info"><div class="mitem-name">Club Sandwich</div><div class="mitem-desc">Triple-decker, grilled chicken, cheddar, fresh veggies, toasted bread</div></div><div class="mitem-price">400</div></div>
+  </div>
+  <div class="menu-items" id="snacks">
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/635330502_122104995735248101_4976656403022624000_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=13d280&_nc_ohc=5xqNs4AxSEwQ7kNvwHXVnlW&_nc_oc=AdnT2-2PtNFChkxBS-ZiIn0sIauY0lk9U4xg0aNx9j947mvPYHaTN7mPZIJQZAOSSLw&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=_JW4Uwjeu_SUiFf_kWjIhQ&_nc_ss=8&oh=00_Afwao917EXiFKlXnz-eWHRAxjhQwPaAA-xNGpbuPmr0QMA&oe=69AEFDF3" alt="12 Hot Wings"/><div class="mitem-info"><div class="mitem-name">12 Pcs Hot Wings</div><div class="mitem-desc">Fiery buffalo wings, crispy coating, served with ranch dip</div></div><div class="mitem-price">From 800</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/634132638_122104995201248101_32743135624050566_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=13d280&_nc_ohc=tmTFT89xT2IQ7kNvwFSG_Zg&_nc_oc=AdliV87jHqHI9cuShEeLA_QUnCsr8ZASNv9drqKWa1PedA1RPyYiaiZYOTruEWJNFKs&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=Wc40fLvUF_LXUG7_WUN4NQ&_nc_ss=8&oh=00_AfxPCse9nbwvW90Ss4F0SpjW1XgwSMTluE7CwtZ-5OlgmA&oe=69AF0541" alt="Loaded Fries"/><div class="mitem-info"><div class="mitem-name">Loaded Fries</div><div class="mitem-desc">Crispy fries loaded with cheese, jalapeños, and signature sauces</div></div><div class="mitem-price">From 300</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/632271694_122103113991248101_7374051721881788328_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=J8FV5nnDxLIQ7kNvwE8QaoX&_nc_oc=AdlZymdI3738YvhTU9h2s-tUomvU0JB6BDNOTLTEWQbFawTZVfzvCiyEbzA8daZ5UYc&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=-xoxvxQWY9sjn7JcSwUh0A&_nc_ss=8&oh=00_AfzmNWEkfO5a6W819oomFPk9HopLgI-GeLr9W724q0jBYg&oe=69AED07C" alt="Crispy Chicken"/><div class="mitem-info"><div class="mitem-name">Crispy Fried Chicken</div><div class="mitem-desc">Crunchy coating, perfectly spiced, juicy inside — with dipping sauce</div></div><div class="mitem-price">From 320</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://lh3.googleusercontent.com/p/AF1QipMoCY1zGiqFYgm8_XQl-ztGiWLo2hFosUu3cRe6=s680-w680-h510-rw" alt="Wraps"/><div class="mitem-info"><div class="mitem-name">Wraps & Rolls</div><div class="mitem-desc">Special Wrap, Jalapeño Wrap, Turkish Wrap, Zinger Wrap, Malai Boti Wrap & more</div></div><div class="mitem-price">From 350</div></div>
+  </div>
+  <div class="menu-items" id="desserts">
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/633957097_122104342383248101_3173662982159104277_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=7OkKk0E_b7MQ7kNvwFh5vAw&_nc_oc=AdlkF7uE_N3pQ3150jzKTXWq1xi7b-YrULVmw9WMPogCeai3ta8hEr0lQk_MfCLN3TI&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=1xNyvYdpMPfFv_k4eBnRRA&_nc_ss=8&oh=00_AfyergMko8AnMclB5kTXz06bjBbnbm9_kqeRq3QIIrVaGQ&oe=69AEDFCD" alt="Dessert"/><div class="mitem-info"><div class="mitem-name">Mughliaaz Dessert Special</div><div class="mitem-desc">Our signature sweet creation — the perfect royal ending to your meal</div></div><div class="mitem-price">From 280</div></div>
+    <div class="mitem"><img class="mitem-img" src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/635194210_122105199129248101_1563821270783504375_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=13d280&_nc_ohc=kVmKKYeAlWMQ7kNvwFM0bOj&_nc_oc=AdnXetMHsdBee3SNNVTk1Re1fTJg2eF602QS3wGQE1MHPv2rLmzcFQTyxvj5y9HZXgI&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=iMU0EKB2eox8C-D_a0VrlQ&_nc_ss=8&oh=00_AfwBYm0PoOtgX6Nf93NUW7Qsi7Q7Hiy2negc33WJ3IhjWw&oe=69AEED2D" alt="Seasonal"/><div class="mitem-info"><div class="mitem-name">Seasonal Specials</div><div class="mitem-desc">Festive and seasonal items — updated for Ramzan, Eid, and special occasions</div></div><div class="mitem-price">Varies</div></div>
+  </div>
+</div></section>
+
+<!-- DEALS SHOWCASE -->
+<section id="deals"><div class="si">
+  <div class="deals-header">
+    <p class="sec-label reveal">✦ Value Packed</p>
+    <h2 class="sec-heading reveal d1">Today's Best Deals</h2>
+    <div class="orn-line reveal d2"><div class="orn-diamond"></div></div>
+    <p class="sec-body reveal d2" style="max-width:500px;margin:0 auto;">More food, more value, more smiles. Pick a deal that suits your crowd.</p>
+  </div>
+  <div class="deals-masonry reveal">
+    <div class="deal-card wide"><img class="deal-img" src="https://scontent.fisb5-1.fna.fbcdn.net/v/t39.30808-6/635118967_122104995945248101_92971254766500988_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_ohc=MYUZBuL9yacQ7kNvwGX7XtJ&_nc_oc=AdmBuc7e50miHbjdScWHlPwv8zsK6BkeWt7ESfcY7kMkDV6vsDrQelkwLg4cNhheMWk&_nc_zt=23&_nc_ht=scontent.fisb5-1.fna&_nc_gid=GFdO06s7JiOa4Y-WdC4_2A&_nc_ss=8&oh=00_AfziYqAj9GcREIkVJ5H0Se35Xt0C872Yo6m38zyRerYEQg&oe=69AEDDC8" alt="Small Pizza Deal"/><div class="deal-overlay"><div class="deal-label">Small Pizza Deal</div></div></div>
+    <div class="deal-card"><img class="deal-img" src="https://scontent.fisb5-1.fna.fbcdn.net/v/t39.30808-6/636554857_122104996323248101_1320479687428740878_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=4zmYDkqU940Q7kNvwEpYzci&_nc_oc=AdmHrCJSgzlgDvPxuUuZjD9y4cHbiThs6Xr_9GPu7mdmedsttIZq1yo2TnfeQVdtMfg&_nc_zt=23&_nc_ht=scontent.fisb5-1.fna&_nc_gid=2UTjAWkCzdOyJfIKJRmvHg&_nc_ss=8&oh=00_AfwdWSLyVjpi0J5WpPg0dzvY-H20i6AGHx9LTPmDnFlC7A&oe=69AED518" alt="Zinger Burger Deal"/><div class="deal-overlay"><div class="deal-label">Zinger Burger Deal</div></div></div>
+    <div class="deal-card"><img class="deal-img" src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/635282446_122104996533248101_4394424100142153207_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=13d280&_nc_ohc=ov7sR95mzTcQ7kNvwHTKt66&_nc_oc=AdlLCuetq74NhdG_9fXNEa3KCN4MWN7UdHGN2aNj3X9pq1RJ1ysocg7etUWUmRZckTk&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=oOCYG-VR5Lu9gBgZmHeFMg&_nc_ss=8&oh=00_AfxfUoFINhQN0cfl1-AYowLKcb8DdxcNF1JwCah2g6TrpA&oe=69AEEDE0" alt="2 Zinger Paratha"/><div class="deal-overlay"><div class="deal-label">2 Zinger Paratha Deal</div></div></div>
+    <div class="deal-card"><img class="deal-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/635089918_122104997403248101_3891996580553901027_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=13d280&_nc_ohc=lWrYmDVdOjsQ7kNvwGraB3z&_nc_oc=AdldTMMUKbZK8oyl7zggRfIdqgulCM9cz1xnNUYrlXeG02_V6sm6hxwG_QfIDqYw4LM&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=FjM4wMGm4qgnE1QqH2aDDA&_nc_ss=8&oh=00_Afy9uOUuW5dZi4K71ODLde1dpXEVBpLup9Enuy8TQrLTHA&oe=69AEE290" alt="1 Small Pizza + 2 Zinger"/><div class="deal-overlay"><div class="deal-label">1 Small Pizza + 2 Zinger Burger</div></div></div>
+    <div class="deal-card"><img class="deal-img" src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/635391508_122104998615248101_288491028890642022_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=13d280&_nc_ohc=PSyhUdnacCcQ7kNvwFuD20U&_nc_oc=AdlfKvjRXfIisJpejkV4-jmNZs3pxSz8Gzp533C535f6CXeHpuurFr7_5NY_SSn0YdA&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=5pFTCl3NlZY9LOuyY9Rt2Q&_nc_ss=8&oh=00_AfwjMhD4O-Jf-qcV0qVILU3KOBNjSowJP8XWfgsFLoIaYw&oe=69AEDECD" alt="1 Medium Pizza + 2 Zinger"/><div class="deal-overlay"><div class="deal-label">1 Medium Pizza + 2 Zinger Burger</div></div></div>
+    <div class="deal-card"><img class="deal-img" src="https://scontent.fisb5-1.fna.fbcdn.net/v/t39.30808-6/635220618_122104998777248101_2366430389744630403_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=13d280&_nc_ohc=1CiLOtvgXqUQ7kNvwF7wDWt&_nc_oc=AdmakbSid5z1imrh4WUSzmrnjBrWD4jd3hI5Wgk85dg2lAwSeANi9cFN3oxDk-amzp4&_nc_zt=23&_nc_ht=scontent.fisb5-1.fna&_nc_gid=jgslpfIYfHgTuCmSbFjOFw&_nc_ss=8&oh=00_Afw8r2zLCuOFRYwjHWnLpAocuIz817_AGVD4FaRO6qIGwg&oe=69AF05CC" alt="Large Pizza + 2 Zinger + 5 Nuggets"/><div class="deal-overlay"><div class="deal-label">1 Large Pizza + 2 Zinger + 5 Nuggets</div></div></div>
+    <div class="deal-card wide"><img class="deal-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/637276173_122104999005248101_1338881965920688312_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=13d280&_nc_ohc=Tu0EmJcyWdAQ7kNvwFuUjmB&_nc_oc=AdllMmxQnRGhjJRG4FbEjAOqHarR0fVmK7u_uxFL2aSnqz6G4450DmeWFwV26Z2cT80&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=doWwqu3glkikwgxdGxyKWw&_nc_ss=8&oh=00_AfwXAqDG4vK6UPd4gPtPl2O-BfY136YxKkuHO7YQ6ofZVw&oe=69AF0590" alt="1.5L Drink + 2 Medium Pizza"/><div class="deal-overlay"><div class="deal-label">1.5 Liter Drink + 2 Medium Pizzas</div></div></div>
+    <div class="deal-card"><img class="deal-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/636653222_122104994373248101_3013488073458985946_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=13d280&_nc_ohc=ZFypJS3V5RMQ7kNvwFbMQlb&_nc_oc=AdkghuDu7aw5H2-vnWcWy4Bb22zs6CHC6LRLuoZslgNMuv4w4BMzPqQGXbpPbMWk2Nc&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=FhMAsaG9ZxY8a3AEvgHLUw&_nc_ss=8&oh=00_AfzlofHWqHuyh3hgZcVRW76rkEEUkrCOCYFzEsH6835meQ&oe=69AEF0A7" alt="Patty Burger"/><div class="deal-overlay"><div class="deal-label">Patty Burger Deal</div></div></div>
+    <div class="deal-card"><img class="deal-img" src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/635330502_122104995735248101_4976656403022624000_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=13d280&_nc_ohc=5xqNs4AxSEwQ7kNvwHXVnlW&_nc_oc=AdnT2-2PtNFChkxBS-ZiIn0sIauY0lk9U4xg0aNx9j947mvPYHaTN7mPZIJQZAOSSLw&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=_JW4Uwjeu_SUiFf_kWjIhQ&_nc_ss=8&oh=00_Afwao917EXiFKlXnz-eWHRAxjhQwPaAA-xNGpbuPmr0QMA&oe=69AEFDF3" alt="Hot Wings"/><div class="deal-overlay"><div class="deal-label">12 Pcs Hot Wings Deal</div></div></div>
+    <div class="deal-card"><img class="deal-img" src="https://scontent.fisb5-2.fna.fbcdn.net/v/t39.30808-6/633957097_122104342383248101_3173662982159104277_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=7OkKk0E_b7MQ7kNvwFh5vAw&_nc_oc=AdlkF7uE_N3pQ3150jzKTXWq1xi7b-YrULVmw9WMPogCeai3ta8hEr0lQk_MfCLN3TI&_nc_zt=23&_nc_ht=scontent.fisb5-2.fna&_nc_gid=1xNyvYdpMPfFv_k4eBnRRA&_nc_ss=8&oh=00_AfyergMko8AnMclB5kTXz06bjBbnbm9_kqeRq3QIIrVaGQ&oe=69AEDFCD" alt="Dessert"/><div class="deal-overlay"><div class="deal-label">Dessert Special</div></div></div>
+  </div>
+  <div style="text-align:center;margin-top:3rem">
+    <a href="tel:+923151555686" class="btn-gold"><span>📞 Call to Order — 0315 1555686</span></a>
+  </div>
+</div></section>
+
+<!-- REVIEWS -->
+<section id="reviews"><div class="si">
+  <p class="sec-label reveal" style="text-align:center">✦ What They Say</p>
+  <h2 class="sec-heading reveal d1" style="text-align:center">Voices of Our Guests</h2>
+  <div class="orn-line reveal d2" style="text-align:center"><div class="orn-diamond"></div></div>
+  <div class="reviews-grid reveal">
+    <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">Aalishan biryani and mughlai combo both were amazing. The spices used were unique and luscious. A great delicacy — you gonna love the variety of mughlai combos over here.</p><div class="rev-author"><div class="rev-av">AK</div><div><div class="rev-name">Ali Khan</div><div class="rev-loc">Abbottabad · Google Review</div></div></div></div>
+    <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">For a food lover, this place is heaven. The pizza and karahi both were extraordinary — the Crown Crust is unlike anything in Abbottabad. Will definitely be back again and again.</p><div class="rev-author"><div class="rev-av">SA</div><div><div class="rev-name">Sara Ahmed</div><div class="rev-loc">Rawalpindi · Google Review</div></div></div></div>
+    <div class="rev-card"><div class="rev-stars">★★★★★</div><p class="rev-text">Chicken qorma and all desi items were amazing. The mughliaaz grill combo is to die for. Quality never compromises — every single visit is better than the last.</p><div class="rev-author"><div class="rev-av">ZM</div><div><div class="rev-name">Zara Mirza</div><div class="rev-loc">Abbottabad · Google Review</div></div></div></div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <p class="sec-label reveal">✦ Don't Wait</p>
+    <h2 class="sec-heading reveal d1">Come Taste the Royalty</h2>
+    <div class="orn-line reveal d2"><div class="orn-diamond"></div></div>
+    <p class="reveal d2">Whether it's a family dinner, a quick snack, or a full celebration — Mughliaaz Café is ready to make every moment unforgettable.</p>
+    <a href="tel:+923151555686" class="btn-gold reveal d3"><span>Call Now · 0315 1555686</span></a>
+    <div class="cta-phone reveal d4"><a href="https://maps.google.com/?q=34.165896,73.2596369">Nawansher Ilayasi, Abbottabad</a></div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location"><div class="si">
+  <div class="loc-grid">
+    <div>
+      <p class="sec-label reveal">✦ Find Us</p>
+      <h2 class="sec-heading reveal d1">We're Right<br>Here for You</h2>
+      <div class="orn-line reveal d2"><div class="orn-diamond"></div></div>
+      <div class="loc-details reveal d2">
+        <div class="loc-detail"><span class="loc-icon">◆</span><div><div class="loc-lbl">Address</div><div class="loc-val">Nawansher Ilayasi<br>Abbottabad, KPK 22020</div></div></div>
+        <div class="loc-detail"><span class="loc-icon">◆</span><div><div class="loc-lbl">Phone</div><div class="loc-val"><a href="tel:+923151555686" style="color:inherit;text-decoration:none">0315 1555686</a></div></div></div>
+        <div class="loc-detail"><span class="loc-icon">◆</span><div><div class="loc-lbl">Opening Hours</div><div class="loc-val">Open Daily · 12:00 PM onwards<br><em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:0.9rem">Walk-ins always welcome</em></div></div></div>
+        <div class="loc-detail"><span class="loc-icon">◆</span><div><div class="loc-lbl">Services</div><div class="loc-val">Dine-In &nbsp;·&nbsp; Takeaway &nbsp;·&nbsp; Catering<br>Events &nbsp;·&nbsp; Home Delivery</div></div></div>
+      </div>
+    </div>
+    <div class="map-wrap reveal d2"><iframe src="https://www.google.com/maps?q=34.165896,73.2596369&z=17&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="https://scontent.fisb6-2.fna.fbcdn.net/v/t39.30808-6/627678497_122096195979248101_3708719850022073469_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=qfSwq1_GPRgQ7kNvwE-8cfd&_nc_oc=Adm2AMxGmf20OXlXA7bgNCKtp_5N7FAUZJ77pGooDGdJJNtFE9nzFfmBnpv4LugH3FQ&_nc_zt=23&_nc_ht=scontent.fisb6-2.fna&_nc_gid=BRZalS6CZKPOrauiSu3pjw&_nc_ss=8&oh=00_Afxcf5q2qkzRAyOjjCS8A6yH8tXgj15AERoEaa0D78BGgQ&oe=69AED4D1" alt="Mughliaaz"/></div>
+  <div class="footer-tag">Where Every Bite Tells a Royal Story — Nawansher Ilayasi, Abbottabad</div>
+  <div class="orn-line" style="margin:1.5rem auto 2rem"><div class="orn-diamond"></div></div>
+  <ul class="footer-links">
+    <li><a href="#about">Our Story</a></li><li><a href="#specialties">Specialties</a></li>
+    <li><a href="#menu">Menu</a></li><li><a href="#deals">Deals</a></li>
+    <li><a href="#reviews">Reviews</a></li><li><a href="#location">Location</a></li>
+  </ul>
+  <div class="footer-copy">© 2024 Mughliaaz Café · Abbottabad, KPK · All Rights Reserved</div>
+</footer>
+
+<script>
+  const nav=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  document.querySelectorAll('.deal-img').forEach(img=>{
+    img.addEventListener('error',()=>{
+      const card=img.closest('.deal-card');
+      if(card) card.remove();
+    });
+  });
+  function switchTab(id,btn){document.querySelectorAll('.menu-items').forEach(el=>el.classList.remove('active'));document.querySelectorAll('.mtab').forEach(el=>el.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active')}
+</script>
+</body>
+</html>
